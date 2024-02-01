@@ -13,34 +13,22 @@ class ComicsTableSeeder extends Seeder
      */
     public function run(): void
     {
-        /*
-            $table->id();
-            $table->string("titolo");
-            $table->text("descrizione");
-            $table->string("immagine");
-            $table->tinyInteger("prezzo");
-            $table->string("serie");
-            $table->date("data_uscita");
-            $table->string("tipo");
-            $table->string("artista");
-            $table->string("autore");
-            $table->timestamps();*/
-        $comic = config("comic");
-        foreach($comic as $comics){
-            $newcomics = new Comic();
-            $newcomics->titolo = $comics["titolo"];
-            $newcomics->descrizione = $comics["descrizione"];
-            $newcomics->immagine = $comics["immagine"];
-            $newcomics->prezzo = $comics["prezzo"];
-            $newcomics->serie = $comics["serie"];
-            $newcomics->data_uscita = $comics["data_uscita"];
-            $newcomics->tipo = $comics["tipo"];
-            $newcomics->artista = $comics["artista"];
-            $newcomics->autore = $comics["autore"];
-            $newcomics->save();
-        }
+        $comics = config('comic_db');
 
-     
+        foreach($comics as $comicss){
+
+            $NewComic = new Comic();
+
+            $NewComic->titolo = $comicss["title"];
+            $NewComic->descrizione = $comicss["description"];
+            $NewComic->immagine = $comicss["thumb"];
+            $NewComic->prezzo = $comicss["price"];
+            $NewComic->serie = $comicss["series"];
+            $NewComic->data_uscita = $comicss["sale_date"];
+            $NewComic->tipo = $comicss["type"];
+
+            $NewComic->save();
+        }
 
 
     }
