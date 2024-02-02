@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Comic;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,7 +16,7 @@ class ComicsTableSeeder extends Seeder
     {
         $comics = config('comic_db');
 
-        foreach($comics as $comicss){
+        foreach ($comics as $comicss) {
 
             $NewComic = new Comic();
 
@@ -29,7 +30,5 @@ class ComicsTableSeeder extends Seeder
 
             $NewComic->save();
         }
-
-
     }
 }
