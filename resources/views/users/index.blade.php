@@ -28,7 +28,7 @@
                     <button type="submit">cancella</button>
                 </form>
                 </div>
-                <a href="{{ route('comics.create') }}">Crea nuova pasta</a>
+                <a href="{{ route('comics.create') }}">Crea un nuovo fumetto</a>
             </li>
         @endforeach
     </ul>
