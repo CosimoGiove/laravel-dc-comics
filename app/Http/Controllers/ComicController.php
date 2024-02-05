@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreComicRequest;
 use App\Models\Comic;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,7 @@ class ComicController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
         $data = $request->all();
 
@@ -46,6 +47,24 @@ class ComicController extends Controller
         $NewComic->tipo = $data["tipo"];
 
         $NewComic->save();
+        /* validazione */
+        // $request->validate([
+            
+        //  "titolo"=>"required|string|min:2|max:100",
+        //  "descrizione"=>"required|string|max:1000",
+        //  "immagine"=>"required|url|string|max:500",
+        //  "prezzo"=>"required|numeric|",
+        //  "data_uscita"=>"required|date",
+        //  "serie"=>"required|string|max:100",
+        //  "tipo"=>"required|string|max:100",
+
+        // ],[
+        //     "immagine.url" =>"l' url inserito non è corretto",
+        //     "titolo.min" =>"il titolo inserito deve essere almeno :min caratteri",
+        //     "prezzo.numeric"=>" il prezzo non è un numero",
+        // ]);
+
+        $data = $request->validated();
 
 
         return redirect()->route('comics.show', $NewComic->id);
@@ -66,17 +85,18 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-
         return view("users.editcomic", compact("comic"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comic $comic)
+    public function update(StoreComicRequest $request, Comic $comic)
     {
         $data = $request->all();
         $comic->update($data);
+        $validate = $request->validated();
+
 
         return view("users.modifche",compact("comic"));
     }

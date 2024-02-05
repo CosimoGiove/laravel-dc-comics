@@ -8,12 +8,25 @@
     <title>Document</title>
 </head>
 <body>
+    <a href="{{ route('comics.index') }}">Torna alla lista dei fumetti</a>
+    @if($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error )
+            <li>
+                {{$error}}
+            </li>
+                
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <form action="{{ route('comics.store',) }}" method="POST">
         @csrf
         <div class="mb-3">
             <div class="text-center">
                 titolo:
-                {{ $comic['titolo'] }}
+                {{ $comic["titolo"] }}
                 <div>
                     effetua le modifiche
                 </div>
@@ -23,42 +36,42 @@
                 titolo :
             </label>
             <input type="text" class="form-control" id="titolo" aria-describedby="emailHelp" id="titolo"
-                value="{{ $comic['titolo'] }}" name="titolo">
+                value="{{old("titolo",$comic['titolo'])}}" name="titolo">
     
             <label for="immagine" class="form-label">
                 immagine :
             </label>
             <input type="text" class="form-control" id="immagine" aria-describedby="emailHelp" id="immagine"
-                value="{{ $comic['immagine'] }}" name="immagine">
+                value="{{old("immagine",$comic['immagine'])}}" name="immagine">
     
             <label for="prezzo" class="form-label">
                 prezzo:
             </label>
             <input type="text" class="form-control" id="prezzo" aria-describedby="emailHelp" id="prezzo"
-                value="{{ $comic['prezzo'] }}" name="prezzo">
+                value="{{old("prezzo",$comic['prezzo'])}}" name="prezzo">
     
             <label for="serie" class="form-label">
                 serie:
             </label>
             <input type="text" class="form-control" id="serie" aria-describedby="emailHelp" id="serie"
-                value="{{ $comic['serie'] }}" name="serie">
+                value="{{old("serie",$comic['serie'])}}" name="serie">
     
             <label for="data_uscita" class="form-label">
                 data di uscita:
             </label>
             <input type="text" class="form-control" id="data_uscita" aria-describedby="emailHelp" id="data_uscita"
-                value="{{ $comic['data_uscita'] }}" name="data_uscita">
+                value="{{old("data_uscita",$comic['data_uscita'])}}" name="data_uscita">
     
             <label for="tipo" class="form-label">
                 tipo:
             </label>
             <input type="text" class="form-control" id="tipo" aria-describedby="emailHelp" id="tipo"
-                value="{{ $comic['tipo'] }}" name="tipo">
+                value="{{old("tipo",$comic['tipo'])}}" name="tipo">
             <label for="descrizione" class="form-label">
                 descrizione:
             </label>
             <input type="text" class="form-control" id="tipo" aria-describedby="emailHelp" id="tipo"
-                value="{{ $comic['descrizione'] }}" name="descrizione">
+                value="{{old("descrizione",$comic['descrizione'])}}" name="descrizione">
         </div>
         <button type="submit">effetua modifica</button>
     </form>

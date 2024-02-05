@@ -10,36 +10,39 @@
 </head>
 
 <body>
-    <a href="{{ route('comics.index') }}">Torna alla lista dei fumetti</a>
-    <div>
-        titolo: 
-        {{$comic["titolo"]}}
+    <div class="container">
+
+        <a href="{{ route('comics.index') }}">Torna alla lista dei fumetti</a>
+        <div>
+            titolo:
+            {{ $comic['titolo'] }}
+        </div>
+        <div>
+            immagine :
+            {{ $comic['immagine'] }}
+        </div>
+        <div>
+            descrizione :
+            {{ $comic['descrizione'] }}
+        </div>
+        <div>
+            prezzo :
+            {{ $comic['prezzo'] }}
+        </div>
+        <div>
+            data di uscita :
+            {{ $comic['data_uscita'] }}
+        </div>
+        <div>
+            tipo:
+            {{ $comic['tipo'] }}
+        </div>
+        <div>
+            serie :
+            {{ $comic['serie'] }}
+        </div>
     </div>
-    <div>
-        immagine :
-        {{$comic["immagine"]}}
-    </div>
-    <div>
-        descrizione :
-        {{$comic["descrizione"]}}
-    </div>
-    <div>
-        prezzo :
-        {{$comic["prezzo"]}}
-    </div>
-    <div>
-        data di uscita :
-        {{$comic["data_uscita"]}}
-    </div>
-    <div>
-        tipo: 
-        {{$comic["tipo"]}}
-    </div>
-    <div>
-        serie : 
-        {{$comic["serie"]}}
-    </div>
-   
-    
+
 </body>
+
 </html>
